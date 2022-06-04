@@ -1,0 +1,89 @@
+{% extends 'blog/career_base.html' %}
+{% load static %}
+{% block content %}
+<style>
+	body
+	{
+		margin:8rem;
+
+	}
+	img
+	{
+
+		height:350px;
+		width:80%;
+		margin-left: 8rem;
+		border:1px solid black;
+	}
+.right
+{
+	margin-left:70%;
+}
+.content
+{
+	margin-left: 8rem;
+}
+	</style><center><h1>Banking as a Career</h1></center><br>
+<img src="{% static 'Career\bank.jpg' %}" class="img">
+
+<div><br>
+			{% if messages %}
+			<ul class="messages">
+				{% for k in messages %}
+				<li style="color:red">{{ k }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+		</div><br>
+		<div class="content">
+			{% if sr1 %}
+			{% for k in sr1 %}
+
+			<table border="0px" width="1100px">
+				<tr>
+					<td class="text-muted"><h4>Summary<br></h4><br>
+					{{ k.Summary }}<br><hr></td>
+				</tr>
+				<tr>
+					<td class="text-muted"><h4>Career Opportunities<br></h4><br>
+					{{k.Career_Opportunities }}<br><hr></td>
+				</tr>
+				<tr>
+					<td class="text-muted"><h4>How to become</h4><br>
+					{{ k.How_to_become }}<br><hr></td>
+				</tr>
+				<tr>
+					<td class="text-muted"><h4>Important Facts</h4><br>
+					{{ k.Important_Facts }}<br><hr></td>
+				</tr>
+				<tr>
+	
+					<td class="text-muted"><h4>Work Description</h4><br>
+					{{ k.Work_Description }}<br><hr></td>
+				</tr>
+				<tr>
+					<td class="text-muted"><h4>Pros and Cons</h4><br>
+					{{ k.Pros_and_Cons }}<br><hr></td>
+				</tr>
+				<div><br>
+	
+			</table>
+			
+			{% endfor %}
+			{% endif %}
+</div>
+	<form class="form-inline my-2 my-lg-0 right" role="search">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search for Career" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

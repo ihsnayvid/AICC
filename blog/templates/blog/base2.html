@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+  {% if title %}
+        <title>Django Blog - {{ title }}</title>
+    {% else %}
+  <title> AICC</title>
+  {% endif %}
+
+</head>
+
+<body>
+  <header class="site-header">
+      <nav class="navbar-expand-md navbar-dark bg-steel fixed-top navbar navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand mr-4" href="{% url 'homepage' %}">AICC</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggle">
+        <div class="navbar-nav mr-auto">
+          <a class="nav-item nav-link" href="{% url 'blog-home' %}">Blog</a>
+          <a class="nav-item nav-link" href="{% url 'careerlibrary' %}">Career Library</a>
+          <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
+         
+          
+        </div>
+       
+        <!-- Navbar Right Side -->
+        <div class="navbar-nav">
+           {% if user.is_authenticated  and user.is_superuser %}
+          <a class="nav-item nav-link" href="{% url 'post_create' %}">New Post</a>
+          <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+          <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+          <a class="nav-item nav-link" href="http://127.0.0.1:8000/admin/">Admin Site</a>
+          {% elif user.is_authenticated %}
+          <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+          <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+          {% else %}
+          <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+          <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+          
+         {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8">
+       {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+      {% block content %}{% endblock %}
+    </div>
+  <div class="col-md-4">
+        
+        <h3>Quick Links</h3>
+        <p class='text-muted'>You can see quick links about any information here.
+          <ul class="list-group">
+            <a class="list-group-item list-group-item-light" href="{% url 'clg' %}">Colleges</a>
+          <a class="list-group-item list-group-item-light" href="{% url 'careerlibrary' %}">Careers</a>
+            <a class="list-group-item list-group-item-light" href="{% url 'blog-home' %}">Blogs</a>
+            <a class="list-group-item list-group-item-light" href="#">Others</a>
+          </ul>
+        </p>
+      <form class="form-inline my-2 my-lg-0 right" role="search" method= "post" action="/college/">
+    {% csrf_token %}
+      <input class="form-control mr-sm-2" type="search" placeholder="Search for College" aria-label="Search" name="textbox">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    </div>
+    
+  </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
+
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v5.0"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends "blog/base2.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+	.right
+	{
+		text-align: right;
+		margin-top:0px;
+	}
+</style>
+{% for con in comments %}
+<div class="list-group-item list-group-item-light container media container">
+<p>{{con.Message}}
+<p class="right">{{con.Created_On}}</p><i>by____{{con.User_Id}}</i></p></div>
+{% endfor %}
+
+<form method="post">
+	{% csrf_token %}
+	{{form|crispy}}
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock content %}

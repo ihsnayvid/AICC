@@ -1,0 +1,49 @@
+{% extends "blog/base2.html" %}
+{% load static %}
+{% block content %}
+<style>
+  .blog-img
+  {
+    width:80%;
+    height:10%;
+  }
+  </style>
+<h1 class="mb-3">Posts by {{view.kwargs.username }} ({{ page_obj.paginator.count}})</h1>
+	{% for post in posts %}
+		<article class="media list-group-item list-group-item-light container media container">
+      <img src="{{ post.author.profile.image.url }}" class="rounded-circle article-img">
+     <font size=+2.5 face="calibri"><b> <a class="article-title mr-2 heading" href="{% url 'post_detail' post.id %}">{{ post.title }}</a></b></font>
+  	<div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="{% url 'user_post' post.author.username %}">{{ post.author }}</a>
+      <small class="text-muted">{{  post.Date|date:"F d, Y" }}</small>
+    </div>
+    <center><img src="{% static 'career/lawyer.jpg' %}" class="blog-img"></center>
+    <p class="article-content">{{ post.content }}</p>
+  </div>
+
+</article>
+{% endfor %}
+<br><br><br>
+
+  {% if is_paginated %}
+
+    {% if page_obj.has_previous %}   <!-- if the page has a previous page -->
+      <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page= {{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+    {% if page_obj.has_next %}   <!--if the page has a next page-->
+      <a class="btn btn-outline-info mb-4" href="?page={{page_obj.next_page_number }}">Next</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{page_obj.paginator.num_pages }}">Previous</a>
+    {% endif %}
+  {% endif %}
+ 
+{% endblock content %}

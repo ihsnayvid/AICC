@@ -1,0 +1,93 @@
+
+{% extends "blog/career_base.html" %}
+{% load static %}
+{% block content %}
+<style>
+	.imgg
+	{
+		width:91%;
+		height:400px;
+		margin-left:4rem;
+		margin-right:2rem;
+		margin-bottom:2rem;
+		align-self: center;
+		align-content: center;
+		border:2px solid lightblue;
+	}
+	body
+	{
+		margin:7rem;
+	}
+	.career-img
+	{
+
+		height:200px;
+		width:340px;
+	}
+	.div-career
+	{
+		margin-left: 10rem;
+
+	}
+.width
+{
+	width:94%;
+}
+.right
+{
+	margin-left:65%;
+}
+.career
+{
+	margin-left: 1rem;
+	margin-top:1rem;
+	margin-bottom: 1rem;
+}
+.tooltipleft
+{
+	margin-top:-200px;
+	margin-bottom: 200px;
+	margin-left:20%;
+	color:white;
+}
+	</style>
+	<title>Career Library</title>
+
+<img src="{% static 'img\c1.png' %}" class="imgg"><br>
+<center><h2>Career Library</h2></center>
+<center><p class="text-muted">Click on the images below to search our top most career recommendations</p></center>
+<br>
+<div class="div-career">
+
+<a href="{% url 'law' %}" data-toggle="popover" title="Law" data-content="Some content inside the popover"><img src="{% static 'Career\law.jpg' %}" class="career-img career" placeholder="Law"/></a>
+	<a href="{% url 'fashion' %}" data-toggle="popover" title="Fashion Design" data-content="Some content inside the popover"><img src="{% static 'Career\fashion.png' %}" class="career-img career" /></a>
+	<a href="{% url 'medicine' %}" data-toggle="popover" title="Medicine" data-content="Some content inside the popover"><img src="{% static 'Career\11.Medicine-Cover.png' %}" class="career-img career" /></a>
+	<a href="{% url 'civil' %}" data-toggle="popover" title="Civil Services" data-content="Some content inside the popover"><img src="{% static 'Career\21.Civil-Services-Cover.png' %}" class="career-img career" /></a>
+	<a href="{% url 'defense' %}" data-toggle="popover" title="Defense Services" data-content="Some content inside the popover"><img src="{% static 'Career\22.Defense-Cover.png' %}" class="career-img career" /></a>
+	<a href="{% url 'manage' %}" data-toggle="popover" title="Management" data-content="Some content inside the popover"><img src="{% static 'Career\25.Management-Cover.png' %}" class="career-img career" /></a>
+	<a href="{% url 'commerce' %}" data-toggle="popover" title="Commerce" data-content="Some content inside the popover"><img src="{% static 'Career\29.Commerce-Accounts-Cover.png' %}" class="career-img career" /></a>
+	<a href="{% url 'pilot' %}" data-toggle="popover" title="Aviation" data-content="Some content inside the popover"><img src="{% static 'Career\4.Aviation-Cover.png' %}" class="career-img career" /></a>
+	<a href="{% url 'architecture' %}" data-toggle="popover" title="Architecture" data-content="Some content inside the popover"><img src="{% static 'Career\5.Architecture-Cover.png' %}" class="career-img career" /></a>
+	<a href="{% url 'arts' %}" data-toggle="popover" title="Performing Arts" data-content="Some content inside the popover"><img src="{% static 'Career\17.Applied-Arts-Cover.png' %}" class="career-img career" /></a>
+	<a href="{% url 'cabin' %}" data-toggle="popover" title="Cabin Crew" data-content="Some content inside the popover"><img src="{% static 'Career\19.Cabin-Crew-Cover.png' %}" class="career-img career" /></a>
+	<a href="{% url 'bank' %}" data-toggle="popover" title="Banking" data-content="Some content inside the popover"><img src="{% static 'Career\36B-Banking_Services.png' %}" class="career-img career" /></a>
+	<a href="{% url 'education' %}" data-toggle="popover" title="Entrepreneurship" data-content="Some content inside the popover"><img src="{% static 'Career\34.Education-Training-Cover.png' %}" class="career-img career" /></a>
+	<a href="{% url 'computer' %}" data-toggle="popover" title="Computer Application" data-content="Some content inside the popover"><img src="{% static 'Career\2.Computer-Applications-Cover.png' %}" class="career-img career" /></a>
+	<a href="{% url 'food' %}" data-toggle="popover" title="Food Engineering Sciences Technology" data-content="Some content inside the popover"><img src="{% static 'Career\7A-Food_Engineering_Sciences_Technology.png' %}" class="career-img career" name="img" /></a>
+</div>
+<br>
+<center><p class="text-muted">* To know about the colleges <span><a href="{% url 'clg' %}" class="nav-item nav-link">Click Here ></span> </a></p></center>
+<form class="form-inline my-2 my-lg-0 right" role="search" method= "post" action="/career-search/">
+    {% csrf_token %}
+      <input class="form-control mr-sm-2" type="search" placeholder="Search for Career" aria-label="Search" name="textbox">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  <script>
+$(document).ready(function(){
+  $('[data-toggle="popover"]').popover();   
+});
+</script>
+
+
+
+{% endblock content %}

@@ -1,0 +1,63 @@
+{% extends "blog/base2.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+
+<style>
+  .blog-img
+  {
+    width:50%;
+    height:2%;
+  }
+  .eight
+  {
+    text-align: right;
+  }
+  </style>
+  <center><h2>Get our experts written Career Oriented Blogs</h2></center><br><br>
+	{% for post in posts %}
+		<article class="list-group-item list-group-item-light container media container" >
+    <!-- <img src="{{ post.author.profile.image.url }}" class="rounded-circle article-img">-->
+      <center><font size=+2.5 face="calibri"><b><a class="article-title mr-2 heading" href="{% url 'post_detail' post.id %}">{{ post.title }}</a></b></font></center>
+  	<div class="media-body">
+    <div class="article-metadata">
+<div class="eight">
+     <i> <a class="mr-2" href="{% url 'user_post' post.author.username %}"> by- {{ post.author }} ,</a></i>
+      <small class="text-muted">{{  post.Date|date:"F d, Y" }}</small>
+    </div></div>
+     <center><img src="{% static 'career/lawyer.jpg' %}" class="blog-img"></center><hr>
+    <p class="article-content">{{ post.content }}</p>
+  </div>
+</article><br><br>
+<!--<a href="{% url 'comments' %}" class="mr-2">Add Comments</a></div>-->
+{% endfor %}
+
+ <!--div class="comment">
+ <form method="post">
+ {% csrf_token %} 
+  <input type="text" class="form-control" placeholder="Write your User Name Here.." name="comment-author">
+  <input type="text" class="form-control" placeholder="Write your comment Here.." name="comment-msg">
+  <button type="submit" class="btn btn-primary">OK</button>
+</form>
+</div> 
+  {% if is_paginated %}-->
+
+    {% if page_obj.has_previous %}   <!-- if the page has a previous page -->
+      <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page= {{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+    {% if page_obj.has_next %}   <!--if the page has a next page-->
+      <a class="btn btn-outline-info mb-4" href="?page={{page_obj.next_page_number }}">Next</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{page_obj.paginator.num_pages }}">Previous</a>
+    {% endif %}
+  {% endif %}
+{% endblock content %}

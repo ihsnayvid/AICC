@@ -1,0 +1,45 @@
+{% extends "blog/base2.html" %}
+{% block content %}
+		
+		<div>
+		</div><br>
+		<center><h2>Leading Institutes in India</h2></center><br>
+
+	<div class="list-group-item list-group-item-light container media container">
+		<h5>View colleges field wise</h5><br>
+		<a href="#" class="btn btn-outline-info">Engineering</a>&nbsp;&nbsp;<a href="#" class="btn btn-outline-info">Food Science & Technology</a>&nbsp;&nbsp;<a href="#" class="btn btn-outline-info">Law</a>&nbsp;&nbsp;<a href="#" class="btn btn-outline-info">Commerce</a>&nbsp;&nbsp;<a href="#" class="btn btn-outline-info">Aviation-Pilot</a>&nbsp;&nbsp;<br><br><a href="#" class="btn btn-outline-info">Medicine</a>&nbsp;&nbsp;<a href="#" class="btn btn-outline-info">Cabin Crew</a>&nbsp;&nbsp;<a href="#" class="btn btn-outline-info">Computer Application and IT</a>&nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-outline-info"> Fine Arts</a>&nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-outline-info">Banking</a>&nbsp;<br></div>
+		<div>
+		<br><br>
+	<div class="list-group-item list-group-item-light container media container">
+		<h5>View colleges location wise</h5><br>
+		<a href="#" class="btn btn-outline-info">Lucknow</a>&nbsp;&nbsp;<a href="#" class="btn btn-outline-info">Bangalore</a>&nbsp;&nbsp;<a href="#" class="btn btn-outline-info">Rajasthan</a>&nbsp;&nbsp;<a href="#" class="btn btn-outline-info">Chennai</a>&nbsp;&nbsp;<a href="#" class="btn btn-outline-info">Delhi</a>&nbsp;&nbsp;<a href="#" class="btn btn-outline-info">Pune</a>&nbsp;&nbsp;<a href="#" class="btn btn-outline-info">West Bengal</a>&nbsp;&nbsp;
+	</div>
+			{% if sr %}
+			{% for k in sr %}
+
+<div class="list-group-item list-group-item-light container media container">
+			<table border="0px" width="600px">
+
+				<tr>
+			
+					<td><h5>{{ k.clg_name}}</h5></td>
+				</tr>
+				<tr>
+					<td >Location : {{ k.clg_loc }}</td>
+					
+				</tr>
+				<tr>
+					<td >Website : {{ k.clg_website }} </td>
+					
+				</tr>
+				
+				
+				
+			</table>
+			</div>
+			<br>
+			{% endfor %}
+			{% endif %}
+</div>
+
+{% endblock content %}

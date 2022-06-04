@@ -1,0 +1,35 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<style>
+	.one
+	{
+		border-radius: 2%;
+	}
+	</style>
+<body>
+	<div class="jumbotron" style="height:100%;width:30%;margin-left: 70%;margin-top:2%;">
+        <h1 class="jumbotron-heading">AICC Chat Room</h1>
+        <p class="lead text-xs-center">
+          Ask your queries from our AI Chatbot  :)
+        </p>
+	<a class="btn btn-outline-info one" href="{% url 'arts' %}"> Performing Arts</a>&nbsp;&nbsp;<a class="btn btn-outline-info one" href="{% url 'commerce' %}">Commerce</a>&nbsp;&nbsp;<a class="btn btn-outline-info one" href="{% url 'manage' %}">Management</a>&nbsp;&nbsp;<br><br><a class="btn btn-outline-info one" href="{% url 'fashion' %}">Fashion Design</a>&nbsp;&nbsp;<a class="btn btn-outline-info one" href="{% url 'computer' %}">Computer Application</a>&nbsp;&nbsp;<a class="btn btn-outline-info one" href="{% url 'careerlibrary' %}">Others</a>&nbsp;&nbsp;<br><br>
+<form method="post" class="form-horizontal" style="height:auto;width:100%;">
+	{% csrf_token %}
+	<div style="width:68%;" class="form-group">
+	{{form|crispy}}<button type="submit" class="btn btn-outline-info" style="margin-top:-30%;margin-left:100%;">Send</button></div>
+	
+	<br>
+</form>
+<br>
+<div style="width:70%;" class="form-group">
+<div class="alert alert-success" style="height:auto;width:100%;">{{text}}</div>
+</div></div>
+</body>
+</html>

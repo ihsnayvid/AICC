@@ -1,0 +1,20 @@
+
+{% extends "blog/base2.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="list-group-item list-group-item-light container media container">
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Blog Create</legend>
+				{{ form|crispy }}
+				<!--<textarea id="summernote"><p>Hello Summernote</p></textarea>-->
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-info"type="submit">Post</button>
+				<a href="https://smallseotools.com/plagiarism-checker/" class="btn btn-outline-info">Check Plagiarism</a>
+			</div>
+		</form>
+	</div>
+
+{% endblock content %}

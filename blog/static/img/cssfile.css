@@ -1,0 +1,107 @@
+h1{
+background-color:hsl(255,50,60);
+color:Teal;
+font-size:4em;
+text-align:center;
+font-family:"Arial";}
+
+
+h2{
+color:Teal;
+font-size:2em;
+font-family:"Arial";}
+
+
+h3{
+color:Teal;
+font-size:2em;
+font-family:"Arial";}
+
+
+h4{
+color:Teal;
+font-size:1.9em;
+font-family:"Arial";
+font-weight:lighter;}
+
+
+p{
+color:"black";
+font-family:"Century Gothic";
+font-size:1.5em;}
+
+
+.tab2{
+text-align:left;
+width:500px;
+height:200px;
+color:blue;}
+
+
+.tab1{
+border:2px solid Teal;
+text-align:left;
+width:50%;
+height:30%;
+color:red;
+font-family:"Consolas";
+font-size:1.2em;
+font-weight:bold;
+margin:0%;}
+
+
+ol{
+color:"black";
+font-family:"Century Gothic";
+font-size:1.5em;}
+
+
+li{
+color:"black";
+font-family:"Century Gothic";
+font-size:1em;
+color:"black";
+font-family:"Century Gothic";
+font-size:0.65em;}
+
+
+.comment
+{color:Teal;font-family:"Consolas";}
+
+
+.tag{
+font-family:"Consolas";
+font-size:1.2em;
+color:#006666;}
+
+
+
+a{
+color:black;
+text-decoration: none;	}
+
+
+a:visited{
+color:black;
+text-decoration: none;}
+
+
+a:hover {
+font-size:1em;
+letter-spacing:3px;
+color:black;
+text-decoration: none;
+background-color:teal;}
+
+
+
+a:active{
+color:white;
+text-decoration: none;}
+
+
+body{
+background-image:URL("html_generators.png");
+background-repeat:no-repeat;
+background-position:50%;
+background-attachment:fixed;}
