@@ -1,0 +1,28 @@
+{% extends 'blog/career_base.html' %}
+{% block content %}
+	<title>Prediction-Test</title>
+</head>
+
+
+<body>
+	<center><h2>Advance Career Selection Assessment</h2><br>
+		<p class="text-muted"> <font color="red">*</font> All Questions are mandatory</p><br></center>
+<div class="list-group-item list-group-item-dark container media container">
+	<br>
+<form method="post" action='/advance_result/'>
+	 {% csrf_token %}
+	{% for qu in question %}
+	<div class="list-group-item list-group-item-light container media container" style="width:40%;height:100%;">
+
+	<font color="black"><strong>{{forloop.counter}}. &nbsp;&nbsp;{{qu.q}} &nbsp; </font><font color="red">*</font></strong><br><br>
+	<div class="list-group-item list-group-item-light" style="border:2px solid red;border-radius: 25px;"><input type="radio" value="0" name='{{qu.id}}'/>&nbsp;&nbsp;<font color="red"><b>{{qu.op1}}</b></font></div><br>
+	<div class="list-group-item list-group-item-light" style="border:2px solid green;border-radius:25px;"><input type="radio" value="1" name='{{qu.id}}'/>&nbsp;&nbsp;<font color="darkgreen"><b>{{qu.op2}}</b></font></div>
+	<br>
+	</div>
+	<br>
+	{% endfor %}
+	<center><button type="submit" class="btn btn-success" style="border-radius: 25px;">Submit</button>&nbsp;&nbsp;&nbsp;<a href="{% url 'advance_test' %}" class="btn btn-success" style="border-radius: 25px;">Reset</a></center>
+
+</form>
+</div>
+{% endblock content %}

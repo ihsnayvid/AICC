@@ -1,0 +1,35 @@
+{% extends 'blog/career_base.html' %}
+{% block content %}
+<style>
+	h2
+	{
+		font-size:3rem;
+	}
+	</style>
+<div class="list-group-item list-group-item-light container media container">
+	<center><h2>Upgrade your account now!</h2>
+	<br>
+	<h4>Advanced Career Selection Test</h4></center><br>
+	<p>The assessment uses machine learning algorithms and gives you your ideal career match more accurately.<br><br>
+		<strong>What does the assessment include?</strong>
+		<ul><li>Easy and simple questions</li><br>
+		<li>Questions based on your interests</li><br>
+		<li>Just 5 questions</li>
+	</ul><br><br>
+		<strong>Why should you take the assessment?</strong>
+		<ul><br><li>Accurate Result</li><br>
+			<li>Result with accuracy score</li><br>
+			<li>Less Time Consuming</li>
+			<br>
+		</ul>
+		<strong>Our Suggestions</strong>
+		<ul><br>
+			<li>Take the test very seriously</li><br>
+			<li>The result is based on your responses</li><br>
+			<li>While choosing your career, the final decision is always yours.</li><br>
+		</ul>
+
+	</p>
+	<center><a href="{% url 'choose' %}" class="btn btn-warning">Upgrade Now</a></center><br>
+</div>
+{% endblock content %}

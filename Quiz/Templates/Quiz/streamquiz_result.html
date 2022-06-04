@@ -1,0 +1,132 @@
+{% extends 'blog/career_base.html'  %}
+{% load static %}
+{% block content %} 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Stream', 'No. of correct answers '],
+          ['Humanities',     {{count_humanities}}],
+          ['Science',      {{count_science}}],
+          ['Arts',  {{count_arts}}],
+          ['Commerce', {{count_commerce}}],
+         
+        ]);
+
+        var options = {
+          title: 'Your Stream Selection Report',
+          is3D: true,
+          pieHole:0.4,
+          
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }</script>
+      
+<style>
+.body
+{
+margin-left:2%;
+margin-top:2%;
+margin-right:2%;
+}
+.head-orange
+{
+	
+	font-size: 2rem;
+}
+</style>
+<center><h1 class="head-orange">Thank You for taking our Stream Selection Assessment</h1></center>
+<a href="#" class=' next btn btn-success' data-toggle="modal" data-target="#myModal"  style="margin-left: 90%;margin-top:-4%;">Retake Quiz</a>
+                                <div class="modal fade" id="myModal">
+    
+                                <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Retake Quiz Again</h4>
+          
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Are You sure you want to retake the quiz?
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <a class="btn btn-primary" href="{% url 'Stream_Quiz' %}">Yes</a>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+<br>
+<div id="piechart" style="width: 500px; height: 300px;margin-left: 60%;"></div>
+<div class="body" >
+{% if count_humanities >= 5 %}
+<div class="card" style="width: 20rem;border:1px solid black;margin-left:5%;height:28rem;margin-top:-20%;">
+  <img src="{% static 'img/humanities.jpg' %}" class="card-img-top" alt="Humanities" style="width:318px;height:200px;">
+  <div class="card-body">
+    <hr style="border:1px solid black;width:100%">
+    <center><h5 class="text-muted">Humanities</h5></center>
+    <p class="card-text">The assessment shows that you are interested in art,music,literature and languages.Then Humanities is the right stream option your should opt in your 9th class.</p>
+  </div>
+</div>
+{% endif %}
+<br>
+{% if count_science >= 5 %}
+<div class="card" style="width: 20rem;border:1px solid black;margin-left:30%;margin-top:-29.5%; height:28rem;">
+  <img src="{% static 'img/science.jpg' %}" class="card-img-top" alt="Science" style="width:318px;height:200px;">
+  <div class="card-body">
+    <hr style="border:1px solid black;width:100%">
+    <center><h5 class="text-muted">Science</h5></center>
+    <p class="card-text">The assessment shows that you are interested in art,music,literature and languages.Then Humanities is the right stream option your should opt in your 9th class.</p>
+  </div>
+</div>
+{% endif %}
+<br>
+{% if count_arts >= 5 %}
+<div class="card" style="width: 20rem;border:1px solid black;margin-left:5%;height:28rem;margin-top:-24%;">
+  <img src="{% static 'img/arts2.jpg' %}" class="card-img-top" alt="Arts" style="width:318px;height:200px;">
+  <div class="card-body">
+    <hr style="border:1px solid black;width:100%">
+    <center><h5 class="text-muted">Arts</h5></center>
+    <p class="card-text">The assessment shows that you are interested in art,music,literature and languages.Then Humanities is the right stream option your should opt in your 9th class.</p>
+  </div>
+</div>
+{% endif %}
+<br>
+{% if count_commerce >= 5 %}
+<div class="card" style="width: 20rem;border:1px solid black;margin-left:30%;margin-top:-29.5%;height:28rem;">
+  <img src="{% static 'img/commerce.jpg' %}" class="card-img-top" alt="Commerce" style="width:318px;height:200px;">
+  <div class="card-body">
+    <hr style="border:1px solid black;width:100%">
+    <center><h5 class="text-muted">Commerce</h5></center>
+    <p class="card-text">The assessment shows that you are interested in art,music,literature and languages.Then Humanities is the right stream option your should opt in your 9th class.</p>
+  </div>
+</div>
+</div>
+
+{% endif %}
+{% endblock content %}
+<!--
+<div class="card" style="width: 20rem;border:1px solid black;margin-left:5%;height:28rem;margin-top:-24%;">
+  <img src="{% static 'img/c2.jpg' %}" class="card-img-top" alt="No Results" style="width:318px;height:200px;">
+  <div class="card-body">
+    <hr style="border:1px solid black;width:100%">
+    <center><h5 class="text-muted">????????</h5></center><br>
+    <p class="card-text">The results show you are not oriented to a single stream for your higher Classes.Please Retake the Quiz!</p>
+  </div>
+</div>
+</div>-->

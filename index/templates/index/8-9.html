@@ -1,0 +1,45 @@
+{% extends 'index/base.html' %}
+{% block content %}
+<div class="list-group-item list-group-item-light container" style="width:15%;margin-left:15%;background: orange">
+          <a class="nav-item nav-link" href="#" style="color:black"><h3 align="center">1.</h3><br>Accurately evaluate your strengths and skills.</a></div>
+          <div class="list-group-item list-group-item-light container" style="width:20%;margin-left: 12.5%;margin-top:20px"><p><h5 align="center">Assess your strengths and align them to your career choice</h5 ><br><b>Accurately evaulate yourself</b><br><br>Assess yourself on 5 dimensions and varous parameters through our career assessment.<br><br><b>Find best-fit careers</b><br><br>Get top 3 career recommendations from hundreds of options o find career domains perfect for you.</p></div>
+
+<div class="list-group-item list-group-item-light container" style="width:15%;margin-left:42%;margin-top:-570px;border: 2px solid orange">
+          <a class="nav-item nav-link" href="#" style="color:black"><h3 align="center">2.</h3><br>Seek expert career guidance and support.</a></div>
+          <div class="list-group-item list-group-item-light container" style="width:20%;margin-left:39.5%;margin-top:20px"><p><h5 align="center">Assess your strengths and align them to your career choice</h5 ><br><b>Accurately evaulate yourself</b><br><br>Assess yourself on 5 dimensions and varous parameters through our career assessment.<br><br><b>Find best-fit careers</b><br><br>Get top 3 career recommendations from hundreds of options to find career domains perfect for you.</p></div>
+
+<div class="list-group-item list-group-item-light container" style="width:15%;margin-left:70%;margin-top:-570px;border: 2px solid orange">          
+          <a class="nav-item nav-link" href="#" style="color:black"><h3 align="center">3.</h3><br>Select the perfect next step for your career.</a></div>
+          <div class="list-group-item list-group-item-light container" style="width:20%;margin-left: 67%;margin-top:20px"><p><h5 align="center">Assess your strengths and align them to your career choice</h5 ><br><b>Accurately evaulate yourself</b><br><br>Assess yourself on 5 dimensions and varous parameters through our career assessment.<br><br><b>Find best-fit careers</b><br><br>Get top 3 career recommendations from hundreds of options o find career domains perfect for you.</p></div>
+<br><br>{% if user.is_authenticated %}
+ <center><a  href="{% url 'squiz' %}" class="nav-item nav-link" style="background: orange;border-radius: 2%;border:2px solid orange;width:8%;color: black" onclick="func();"> Next</a>
+</center>
+
+{% else %}
+<center><a  href="{% url 'login' %}" class="nav-item nav-link" style="background: orange;border-radius: 2%;border:2px solid orange;width:8%;color: black" onclick="func();"> Next</a>
+</center>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

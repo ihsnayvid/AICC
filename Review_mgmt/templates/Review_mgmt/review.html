@@ -1,0 +1,87 @@
+{% extends 'blog/homebase.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h3>Please write us your feedback</h3>
+    <div class="list-group-item list-group-item-light container media container">
+        <form method="POST" class="form-group needs-validation contact100-form validate-form">
+            {% csrf_token %}
+            <div class="wrap-input100">
+                <div class="form-group">
+                {{form|crispy}}
+                </div>
+            <span class="focus-input100"></span>
+            </div>
+
+            <br>
+            <div class="container-contact100-form-btn">
+                    <button class="contact100-form-btn">
+                        Send Feedback
+                    </button>
+            </div>
+        </form>
+        </div>
+        <div class="contact100-more flex-col-c-m" style="background-image: url('images/bg-01.jpg');">
+                <div class="flex-w size1 p-b-47">
+                    <div class="txt1 p-r-25">
+                        <span class="lnr lnr-map-marker"></span>
+                    </div>
+
+                    <div class="flex-col size2">
+                        <span class="txt1 p-b-20">
+                            Address
+                        </span>
+
+                        <span class="txt2">
+                            168/23 Vikas Nagar Lucknow, UP, India
+                        </span>
+                    </div>
+                </div>
+
+                <div class="dis-flex size1 p-b-47">
+                    <div class="txt1 p-r-25">
+                        <span class="lnr lnr-phone-handset"></span>
+                    </div>
+
+                    <div class="flex-col size2">
+                        <span class="txt1 p-b-20">
+                            Contact Us
+                        </span>
+
+                        <span class="txt2">
+                            +91-9721360172
+                        </span>
+                    </div>
+                </div>
+
+                <div class="dis-flex size1 p-b-47">
+                    <div class="txt1 p-r-25">
+                        <span class="lnr lnr-envelope"></span>
+                    </div>
+
+                    <div class="flex-col size2">
+                        <span class="txt1 p-b-20">
+                            Mail us:
+                        </span>
+
+                        <span class="txt3">
+                            sri.divyanshi1920@gmail.com
+                        </span>
+                    </div>
+                </div>
+            </div>
+        <br><br>
+        {% if text == 'Positive' %}
+        <div class="positive" style="background-color: green; width: 100%; border-radius: 24px; padding: 12px; color: white; text-align: center;">
+            Thank you for your positive feedback.
+        </div>
+        {% elif text == 'Negative' %}
+        <div class="negative" style="background-color: red; width: 100%; border-radius: 24px; padding: 12px; color: white">
+            We are sorry to hear that! We would try to resolve the issue as soon as possible!
+        </div>
+        {% endif %}
+
+{% endblock content %}
+
+<!--<div class="alert alert-success">
+  <strong>Success!</strong> Indicates a successful or positive action.
+</div>-->

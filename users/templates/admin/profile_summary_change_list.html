@@ -1,0 +1,54 @@
+{% extends 'admin/change_list.html' %}
+{% block content_title %}
+
+    <h1> Profile Summary </h1>
+{% endblock content_title %}
+{% block result_list %}
+   <div class='results'>
+    <table>
+        
+    <thead>
+      <tr>
+        <th>
+          <div class='text'>
+            <a href='#'>Category</a>
+          </div>
+        </th>
+        <th>
+          <div class='text'>
+            <a href=#>Total</a>
+          </div>
+        </th>
+        <th>
+          <div class='text'>
+            <a href=#>Total Profiles</a>
+          </div>
+        </th>
+        <th>
+          <div class='text'>
+            <a href=#>
+              <strong>% Of Total Profiles</strong>
+            </a>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in summary %}
+      <tr class="{% cycle 'row1' 'row2' %}">
+        <td> </td>
+        <td> </td>
+        <td>  </td>
+        <td>
+          <strong>
+          
+          </strong>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    
+  </table>
+</div>
+{% endblock result_list %}
+{% block pagination %}{% endblock  %}

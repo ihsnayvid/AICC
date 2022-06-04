@@ -1,0 +1,37 @@
+{% extends "blog/base2.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+	.img
+	{
+		width:75%;
+		height:100%;
+		margin-left: 100%;
+		margin-top:-580px;
+		border:1px solid black;
+
+	}
+	</style>
+<h2>Our Network of Assessments</h2>
+<h4>Career Selection Assessment</h4>
+<p class="text-muted">Our assessment framework,has been tailor made for students.The assessment form the pillars of career guidance and will help you make a scientific and accurate choice for the success of your career.
+<p class="text-muted">This assessment comprises of a Interest Section where you will be attempting questions that will decide which career field you are interested in.</p>
+<ul class="text-muted">
+<li><a class="nav-item nav-link" href="{% url 'iquiz' %}">Start your Test Now</a>
+</li>
+</ul>		
+
+	<br>
+	<hr>
+	<p class="text-muted">Instructions for the Assessment:</p>
+	<ol class="text-muted">
+		<li>All the questions are mandatory.</li>
+		<li>Never spend too much time on a question.</li>
+		<li>Try to complete all the questions.</li>
+		<li>Time limit for the assessment depends on types of tests.</li>
+	</ol>
+</p>
+
+
+{% endblock content %}

@@ -1,0 +1,45 @@
+{% extends 'blog/career_base.html' %}
+{% block content %}
+<style>
+	.head{
+		font-size:3rem;
+	}
+	.p
+	{
+		text-decoration: bold;
+		font-color:black;
+		font-size:2rem;
+		width:70%;
+	}
+	.f
+	{
+		font-size: 4rem;
+	}
+	.quote
+	{
+		font-size:2rem;
+	}
+</style>
+	<title>Result</title>
+	<a href="{% url 'homepage' %}" class="nav-item nav-link" style="margin-left:92%;">Back to Home</a>
+	<center><p class="head">Thank You for taking our Advance Career Selection Test</p></center>
+	<br>
+	{% if prediction == 'yes' %}
+	<center><div class="alert alert-success p">
+    <strong><font color="green" size="7rem" class="f"> +ve&nbsp;&nbsp;</font> </strong>Test Result is positive
+	</div><br>
+	<p class="text-muted">Our Results show that your chosen career is 80% right</p></center>
+	<br><br>
+	<center><a href="{% url 'advance_test' %}" class="nav-item nav-link btn btn-success" style="width:10%;">Retake Test</a></center>
+	{% elif prediction == 'no' %}
+	<center><div class="alert alert-danger p">
+    <strong><font color="red" size="7rem" class="f"> -ve&nbsp;&nbsp; </font></strong>Test Result is negative 
+	</div><br>
+	<p class="text-muted">Sorry! Our Results show that your chosen career is not suitable for you.</p></center><br><br>
+	<center><a href="{% url 'advance_test' %}" class="nav-item nav-link btn btn-danger" style="width:10%;">Retake Test</a></center>
+	{% endif %}
+<br><br><br><br><br>
+<center><p class="quote"><font size="10rem">'</font> <i>Remember : Final Decision is always yours</i> <font size="10rem">'</font></p></center>
+	<br><br>
+	
+{% endblock content %}

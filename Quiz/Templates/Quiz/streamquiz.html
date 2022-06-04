@@ -1,0 +1,186 @@
+{% extends "blog/career_base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<script>
+function startTimer(duration, display) { 
+    var start = Date.now(),
+        diff,
+        minutes,
+        seconds;
+    function timer() {
+        // get the number of seconds that have elapsed since
+        // startTimer() was called
+        diff = duration - (((Date.now() - start) / 1000) | 0);
+        // does the same job as parseInt truncates the float
+        minutes = (diff / 60) | 0;
+        seconds = (diff % 60) | 0;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        display.textContent = minutes + ":" + seconds;
+        if (diff <= 0) {
+            // add one second so that the count down starts at the full duration
+            // example 05:00 not 04:59
+            start = Date.now() + 1000;
+        }
+        if(minutes==0 && seconds==0)
+        {
+            alert("Sorry ! You time is up.");
+            document.questionForm.submit();
+        }
+    };
+    // we don't want to wait a full second before the timer starts
+    timer();
+    setInterval(timer, 1000);
+}
+window.onload = function () {
+    var fiveMinutes = 60 * 5,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+};
+</script>
+<script>
+    function myfun(){
+        var a=document.questionForm.container;
+        for(i=0;i<4;i++){
+            if(a[i].checked==true)
+                return true;
+        }
+        document.getElementById("msg").innerHTML="Please"
+        return false;
+    }
+    </script>
+<style>
+            
+            .error {
+                color: #B94A48;
+            }
+            .form-horizontal {
+                margin-bottom: 0px;
+            }
+            .hide{display: none;}
+            .margin
+            {
+                margin-left: 1rem;
+                border:1px solid grey;
+            }
+        </style>
+<center><h1>Stream Selection Assessment</h1></center>
+<p class="text-muted" style="margin-left: 90%;margin-top:-3%;">Remaining Time &nbsp;<span id="time"></span></p>
+<br>
+<div class="col-md-8 row" style="margin-top:30px;margin-left:15%">
+    <div class="col-md-2">&nbsp;</div>
+        <div class="col-md-8 img-thumbnail">
+                <div class="question">
+                        <div class="col-xs-12 ">
+                            <p><br>
+                               Total Questions: 10
+                            </p>
+                            <hr>
+                            <form class="form-horizontal" role="form" id='login' method="post" action ='/stream-result/' name="questionForm">
+                               {% csrf_token %}
+                                {% for quest in questions %}
+                                
+                                {% if forloop.counter == 1 %}
+                                <div class="progress">
+  <div class="progress-bar bg-success" role="progressbar" style="width: {{forloop.counter}}%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">{{forloop.counter}}%</div>
+</div>   <br>              
+                                <div id='question{{forloop.counter}}' class='cont'>
+                                <h6 class='questions' id="qname{{forloop.counter}}"> {{forloop.counter}}.{{quest.question}}</h6><br>
+                                <div class="list-group-item list-group-item-dark"> <input type="radio" value="1" id='radio1_{{quest.id}}' name='{{quest.id}}' class="margin"  required/>&nbsp;{{quest.choice_one}}</div>
+                               <br/>
+                                <div class="list-group-item list-group-item-dark"><input type="radio" value="1" id='radio1_{{quest.id}}' name='{{quest.id}}' class="margin"  required/>&nbsp;{{quest.choice_two}}
+                                <br/></div><br/>
+                                <div class="list-group-item list-group-item-dark"><input type="radio" value="3" id='radio1_{{quest.id}}' name='{{quest.id}}' class="margin" required/>&nbsp;{{quest.choice_three}}
+                                </div><br/>
+                                <div class="list-group-item list-group-item-dark"><input type="radio" value="4" id='radio1_{{quest.id}}' name='{{quest.id}}' class="margin" required/>&nbsp;{{quest.choice_four}}
+                                </div><br/>
+                                <input type="radio" checked='checked' style='display:none' value="5" id='radio1_{{quest.id}}' name='{{quest.id}}'/>                                                                      
+                                <br/>
+                                <button id='{{forloop.counter}}' class='next btn btn-success' type='button' onclick="return myfun()">Next</button>
+                                <p id="msg"></p>
+                                </div>     
+                                  
+                                {% elif forloop.counter < 1 or forloop.counter < count %}
+                                 
+                                   <div id='question{{forloop.counter}}' class='cont'>
+                                <h6 class='questions' id="qname{{forloop.counter}}">{{forloop.counter}}.{{quest.question}}</h6><br>
+                                <div class="list-group-item list-group-item-dark"><input type="radio" value="1" id='radio1_{{quest.id}}' name='{{quest.id}}' class="margin"/>&nbsp;{{quest.choice_one}}
+                                </div><br/>
+                                <div class="list-group-item list-group-item-dark"><input type="radio" value="2" id='radio1_{{quest.id}}' name='{{quest.id}}' class="margin"/>&nbsp;{{quest.choice_two}}
+                                </div><br/>
+                                <div class="list-group-item list-group-item-dark"><input type="radio" value="3" id='radio1_{{quest.id}}' name='{{quest.id}}' class="margin"/>&nbsp;{{quest.choice_three}}
+                                </div><br/>
+                                <div class="list-group-item list-group-item-dark"><input type="radio" value="4" id='radio1_{{quest.id}}' name='{{quest.id}}' class="margin"/>&nbsp;{{quest.choice_four}}
+                                </div><br/>
+                                <input type="radio" checked='checked' style='display:none' value="5" id='radio1_{{quest.id}}' name='{{quest.id}}'/>                                                                      
+                                <br/>
+                                <button id='{{forloop.counter}}' class='previous btn btn-success' type='button'>Previous</button>                    
+                                <button id='{{forloop.counter}}' class='next btn btn-success' type='button' >Next</button>
+                                </div>
+                                   
+                                   
+                                   
+                                    
+                                    
+                               {% elif forloop.counter == count %}
+                                <div id='question{{forloop.counter}}' class='cont'>
+                                <h6 class='questions' id="qname{{forloop.counter}}">{{forloop.counter}}.{{quest.question}}</h6><br>
+                                <div class="list-group-item list-group-item-dark"><input type="radio" value="1" id='radio1_{{quest.id}}' name='{{quest.id}}' class="margin"/>&nbsp;{{quest.choice_one}}
+                                </div><br/>
+                                <div class="list-group-item list-group-item-dark"><input type="radio" value="2" id='radio1_{{quest.id}}' name='{{quest.id}}' class="margin"/>&nbsp;{{quest.choice_two}}
+                                </div><br/>
+                                <div class="list-group-item list-group-item-dark"><input type="radio" value="3" id='radio1_{{quest.id}}' name='{{quest.id}}'class="margin"/>&nbsp;{{quest.choice_three}}
+                                </div><br/>
+                                <div class="list-group-item list-group-item-dark"><input type="radio" value="4" id='radio1_{{quest.id}}' name='{{quest.id}}' class="margin"/>{{quest.choice_four}}
+                                </div><br/>
+                                <input type="radio" checked='checked' style='display:none' value="5" id='radio1_{{quest.id}}' name='{{quest.id}}'/>                                                                      
+                                <br/>
+                                
+                                <button id='{{forloop.counter}}' class='previous btn btn-success' type='button'>Previous</button>                    
+                                <button id='{{forloop.counter}}' class='next btn btn-success' type='submit' >Finish</button>
+                                
+                                
+                                </div>
+                                
+                                 {% endif %}    
+                                {% endfor %} 
+                            </form>
+                        </div>
+        </div>
+    
+
+</div></center>		
+
+ 
+		<script src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
+		<script src="{% static 'js/jquery.validate.min.js' %}"></script>
+		
+		<script>
+		$('.cont').addClass('hide');
+		count=$('.questions').length;
+		 $('#question'+1).removeClass('hide');
+		 
+		 $(document).on('click','.next',function(){
+		     last=parseInt($(this).attr('id'));     
+		     nex=last+1;
+		     $('#question'+last).addClass('hide');
+		     
+		     $('#question'+nex).removeClass('hide');
+		 });
+		 
+		 $(document).on('click','.previous',function(){
+             last=parseInt($(this).attr('id'));     
+             pre=last-1;
+             $('#question'+last).addClass('hide');
+             
+             $('#question'+pre).removeClass('hide');
+         }); 
+		</script>
+<script>
+    $('.progress-bar bg-success').addClass('hide');
+    count=$('.questions').length;
+</script>
+{% endblock %}
+
+  
